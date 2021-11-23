@@ -24,6 +24,7 @@ const descriptionEl = document.querySelector("#description");
 const humidityEl = document.querySelector("#humidity");
 const windEl = document.querySelector("#wind");
 const bgEl = document.querySelector("#app-bg");
+const typewriterEl = document.querySelector(".typewriter");
 
 // HANDLE EVENTS
 inputEl.addEventListener("keyup", function (event) {
@@ -32,6 +33,13 @@ inputEl.addEventListener("keyup", function (event) {
   }
 });
 
+function resetAnimation() {
+  const el = typewriterEl;
+  el.style.animation = "none";
+  el.offsetHeight; /* trigger reflow */
+  el.style.animation = null;
+}
+
 searchBtnEl.addEventListener("click", () => {
   let city = inputEl.value;
 
@@ -39,7 +47,7 @@ searchBtnEl.addEventListener("click", () => {
     if (data.name == undefined) return;
 
     bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background-city-image"/>`;
-
+    resetAnimation();
     locationEL.innerText = data.name;
     tempEl.innerHTML = `${Math.round(
       data.main.temp
