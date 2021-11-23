@@ -9,8 +9,14 @@
     <script src="main.js" defer></script>
   </head>
   <body>
+    <div class="app__background-img" id="app-bg">
+      <img
+        src="https://source.unsplash.com/featured/?${city}"
+        alt="background-city-image"
+      />
+    </div>
     <div class="app">
-      <div class="app__card">
+      <div class="app__search">
         <input
           class="app__search-bar"
           id="search-city"
@@ -34,19 +40,19 @@
             ></path>
           </svg>
         </button>
-        <h1 class="app__location-name">
-          Meteo à <span id="location">Bangkok</span>
-        </h1>
-        <div class="app__temp" id="temp">
-          26<span class="app__unit-symbol" id="unit">°C</span>
-        </div>
-        <div class="app__weather-icon" id="icon"></div>
-        <p class="app__weather-description" id="description">
-          partiellement nuageux
-        </p>
-        <div class="app__humidity" id="humidity">Humidité: 79%</div>
-        <div class="app__wind-speed" id="wind">Vent: 2km/h</div>
       </div>
+      <h1 class="app__location-name">
+        Météo à <span id="location">Bangkok</span>
+      </h1>
+      <div class="app__temp" id="temp">
+        26<span class="app__unit-symbol" id="unit">°C</span>
+      </div>
+      <div class="app__weather-icon" id="icon"></div>
+      <p class="app__weather-description" id="description">
+        partiellement nuageux
+      </p>
+      <div class="app__humidity" id="humidity">Humidité: 79%</div>
+      <div class="app__wind-speed" id="wind">Vent: 2km/h</div>
     </div>
   </body>
 </html>

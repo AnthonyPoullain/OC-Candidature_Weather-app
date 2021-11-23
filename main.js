@@ -23,6 +23,7 @@ const iconEl = document.querySelector("#icon");
 const descriptionEl = document.querySelector("#description");
 const humidityEl = document.querySelector("#humidity");
 const windEl = document.querySelector("#wind");
+const bgEl = document.querySelector("#app-bg");
 
 // HANDLE EVENTS
 inputEl.addEventListener("keyup", function (event) {
@@ -37,8 +38,12 @@ searchBtnEl.addEventListener("click", () => {
   api.searchApi(city).then((data) => {
     if (data.name == undefined) return;
 
+    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background-city-image"/>`;
+
     locationEL.innerText = data.name;
-    tempEl.innerText = `${Math.round(data.main.temp)}°C`;
+    tempEl.innerHTML = `${Math.round(
+      data.main.temp
+    )}<span class="app__unit-symbol" id="unit">°C</span>`;
     descriptionEl.innerText = data.weather[0].description;
     humidityEl.innerText = `Humidité: ${data.main.humidity}%`;
     windEl.innerText = `Vent: ${Math.round(data.wind.speed)}km/h`;

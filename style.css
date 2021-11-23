@@ -10,17 +10,85 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: arial, sans-serif;
-  background-image: "";
+  color: white;
+  position: relative;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 p::first-letter {
   text-transform: capitalize;
 }
 
+img {
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .app {
   height: 100%;
   width: 100%;
+  max-width: 30rem;
+  margin: 0 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.app__background-img {
+  opacity: 30%;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app__search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.app__search-bar,
+.app__search-btn {
+  opacity: 30%;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.app__search-bar {
+  margin-right: 1rem;
+  width: 100%;
+}
+.app__search-bar:hover,
+.app__search-btn:hover {
+  opacity: 60%;
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+
+.app__search-btn {
+  cursor: pointer;
+}
+
+.app__temp {
+  font-size: 5rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.app__unit-symbol {
+  font-size: 2rem;
+  position: absolute;
+  top: 0.8rem;
 }
