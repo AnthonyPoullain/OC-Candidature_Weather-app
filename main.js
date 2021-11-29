@@ -26,18 +26,11 @@ const api = {
   },
 };
 
-// HANDLE EVENTS
-inputEl.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    searchBtnEl.click();
-  }
-});
-
-function resetAnimation() {
-  const el = locationEL;
-  el.style.animation = "none";
-  el.offsetHeight; /* trigger reflow */
-  el.style.animation = null;
+// Functions
+function resetAnimation(element) {
+  element.style.animation = "none";
+  element.offsetHeight; /* trigger reflow */
+  element.style.animation = null;
 }
 
 function resetSearchBar() {
@@ -45,8 +38,15 @@ function resetSearchBar() {
   inputErrorEl.classList.remove("display");
 }
 
+// HANDLE EVENTS
+inputEl.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    searchBtnEl.click();
+  }
+});
+
 searchBtnEl.addEventListener("click", () => {
-  let city = inputEl.value;
+  city = inputEl.value;
 
   api.searchApi(city).then((data) => {
     if (data.name == undefined) {
@@ -54,16 +54,43 @@ searchBtnEl.addEventListener("click", () => {
       return;
     }
 
-    resetAnimation();
+    resetAnimation(locationEL);
+    resetAnimation(bgEl);
     resetSearchBar();
 
-    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background-city-image"/>`;
+    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background city image"/>`;
     locationEL.innerText = data.name;
+    iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
     tempEl.innerHTML = `${Math.round(
       data.main.temp
     )}<span class="app__unit-symbol" id="unit">°C</span>`;
     descriptionEl.innerText = data.weather[0].description;
+    descriptionEl.insertAdjacentElement("afterbegin", "");
     humidityEl.innerText = `Humidité: ${data.main.humidity}%`;
     windEl.innerText = `Vent: ${Math.round(data.wind.speed)}km/h`;
   });
+});
+
+// default
+let city = "bangkok";
+api.searchApi(city).then((data) => {
+  if (data.name == undefined) {
+    inputErrorEl.classList.add("display");
+    return;
+  }
+
+  resetAnimation(locationEL);
+  resetAnimation(bgEl);
+  resetSearchBar();
+
+  bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background city image"/>`;
+  locationEL.innerText = data.name;
+  iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
+  tempEl.innerHTML = `${Math.round(
+    data.main.temp
+  )}<span class="app__unit-symbol" id="unit">°C</span>`;
+  descriptionEl.innerText = data.weather[0].description;
+  // descriptionEl.insertAdjacentElement("afterbegin", "");
+  humidityEl.innerText = `Humidité: ${data.main.humidity}%`;
+  windEl.innerText = `Vent: ${Math.round(data.wind.speed)}km/h`;
 });
