@@ -10,7 +10,7 @@ const windEl = document.querySelector("#wind");
 const bgEl = document.querySelector("#app-bg");
 const inputErrorEl = document.querySelector("#city-error");
 
-// API INFO
+// API
 const api = {
   // Example:
   // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -26,7 +26,7 @@ const api = {
   },
 };
 
-// Functions
+// FUNCTIONS
 function resetAnimation(element) {
   element.style.animation = "none";
   element.offsetHeight; /* trigger reflow */
@@ -38,16 +38,7 @@ function resetSearchBar() {
   inputErrorEl.classList.remove("display");
 }
 
-// HANDLE EVENTS
-inputEl.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    searchBtnEl.click();
-  }
-});
-
-searchBtnEl.addEventListener("click", () => {
-  city = inputEl.value;
-
+function displayWeather(city) {
   api.searchApi(city).then((data) => {
     if (data.name == undefined) {
       inputErrorEl.classList.add("display");
@@ -58,39 +49,30 @@ searchBtnEl.addEventListener("click", () => {
     resetAnimation(bgEl);
     resetSearchBar();
 
-    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background city image"/>`;
+    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" onload="this.style.opacity=.2" alt="background city image"/>`;
     locationEL.innerText = data.name;
     iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
     tempEl.innerHTML = `${Math.round(
       data.main.temp
     )}<span class="app__unit-symbol" id="unit">°C</span>`;
     descriptionEl.innerText = data.weather[0].description;
-    descriptionEl.insertAdjacentElement("afterbegin", "");
     humidityEl.innerText = `Humidité: ${data.main.humidity}%`;
     windEl.innerText = `Vent: ${Math.round(data.wind.speed)}km/h`;
   });
-});
+}
 
-// default
-let city = "bangkok";
-api.searchApi(city).then((data) => {
-  if (data.name == undefined) {
-    inputErrorEl.classList.add("display");
-    return;
+// HANDLE EVENTS
+inputEl.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    searchBtnEl.click();
   }
-
-  resetAnimation(locationEL);
-  resetAnimation(bgEl);
-  resetSearchBar();
-
-  bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" alt="background city image"/>`;
-  locationEL.innerText = data.name;
-  iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
-  tempEl.innerHTML = `${Math.round(
-    data.main.temp
-  )}<span class="app__unit-symbol" id="unit">°C</span>`;
-  descriptionEl.innerText = data.weather[0].description;
-  // descriptionEl.insertAdjacentElement("afterbegin", "");
-  humidityEl.innerText = `Humidité: ${data.main.humidity}%`;
-  windEl.innerText = `Vent: ${Math.round(data.wind.speed)}km/h`;
 });
+
+searchBtnEl.addEventListener("click", () => {
+  city = inputEl.value;
+  displayWeather(city);
+});
+
+// DEFAULT
+let city = "bangkok";
+displayWeather(city);

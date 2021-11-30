@@ -9,13 +9,8 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div class="app__background-img" id="app-bg">
-      <img
-        src="https://source.unsplash.com/featured/?${city}"
-        alt="background-city-image"
-      />
-    </div>
     <div class="app">
+      <div class="app__background-img" id="app-bg"></div>
       <div class="app__search">
         <input
           class="app__search-bar"
@@ -44,22 +39,18 @@
       <p class="app__error-city" id="city-error">
         Entrez un nom de ville valide...
       </p>
-      <h2 class="app__location-subtitle">Météo à</h2>
-      <h1 class="app__location-name typewriter" id="location">Bangkok</h1>
+      <h2 class="app__location-subtitle"></h2>
+      <h1 class="app__location-name typewriter" id="location"></h1>
       <div class="app__temp" id="temp">
-        loading<span class="app__unit-symbol" id="unit">°C</span>
+        <img src="assets/loading-buffering.gif" alt="Loading..." /><span
+          class="app__unit-symbol"
+          id="unit"
+        ></span>
       </div>
-      <div class="app__weather-icon" id="icon">
-        <img
-          src="https://openweathermap.org/img/wn/04n.png"
-          alt="weather icon"
-        />
-      </div>
-      <p class="app__weather-description" id="description">
-        partiellement nuageux
-      </p>
-      <div class="app__humidity" id="humidity">Humidité: 79%</div>
-      <div class="app__wind-speed" id="wind">Vent: 2km/h</div>
+      <div class="app__weather-icon" id="icon"></div>
+      <p class="app__weather-description" id="description"></p>
+      <div class="app__humidity" id="humidity"></div>
+      <div class="app__wind-speed" id="wind"></div>
     </div>
   </body>
 </html>
