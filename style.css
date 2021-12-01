@@ -32,9 +32,8 @@ img {
 
 .app {
   height: 100%;
-  width: 100%;
+  width: 90%;
   max-width: 30rem;
-  margin: 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,7 +85,6 @@ img {
   font-size: 1rem;
   font-weight: inherit;
   color: gray;
-  margin-right: 1rem;
   width: 100%;
   text-align: center;
 }
@@ -101,6 +99,7 @@ img {
   cursor: pointer;
   border-radius: 50%;
   width: 55px;
+  margin-left: 1rem;
 }
 
 .app__search-btn svg {
@@ -108,7 +107,8 @@ img {
 }
 
 .typewriter {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  overflow: hidden; /* Ensures the content is not revealed until the animation
+   */
   border-right: 0.15em solid white; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -155,18 +155,18 @@ img {
 }
 
 .app__location-name {
-  font-size: clamp(1.5rem, 10vw, 3rem);
+  font-size: clamp(1.5rem, 8vw, 3rem);
   margin: 0;
   margin-bottom: 1rem;
   padding-right: 0.3rem;
 }
 
 .app__temp {
-  /* font-size: 8rem; */
-  font-size: clamp(4rem, 20vw, 8rem);
+  font-size: clamp(5rem, 20vw, 8rem);
   font-weight: bold;
-  position: relative;
   color: white;
+  line-height: 0.8;
+  margin: 1.5rem 0;
 }
 
 .app__temp img {
@@ -174,19 +174,20 @@ img {
 }
 
 .app__unit-symbol {
-  font-size: 2rem;
-  position: absolute;
-  top: 1.2rem;
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  vertical-align: top;
+  top: 0;
 }
 
 .app__weather-description {
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 4vw, 1.5rem);
   font-weight: bold;
   margin-bottom: 2rem;
 }
 
 .app__humidity,
 .app__wind-speed {
+  font-size: clamp(1rem, 3vw, 1.2rem);
   opacity: 40%;
   margin-bottom: 0.5rem;
 }
@@ -195,16 +196,7 @@ img {
   .app__search-btn {
     display: none;
   }
-  .app__search-bar {
-    margin-right: 0;
-  }
 
-  /* .app__location-name {
-    font-size: 2.5rem;
-  } */
-  .app__temp {
-    font-size: 4rem;
-  }
   .app__search-bar::placeholder {
     font-size: 0.85rem;
   }
