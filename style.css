@@ -34,7 +34,7 @@ img {
   height: 100%;
   width: 100%;
   max-width: 30rem;
-  margin: 0 4rem;
+  margin: 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,17 +151,19 @@ img {
 
 .app__location-subtitle {
   opacity: 40%;
+  font-size: clamp(1rem, 6vw, 2rem);
 }
 
 .app__location-name {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 10vw, 3rem);
   margin: 0;
   margin-bottom: 1rem;
   padding-right: 0.3rem;
 }
 
 .app__temp {
-  font-size: 8rem;
+  /* font-size: 8rem; */
+  font-size: clamp(4rem, 20vw, 8rem);
   font-weight: bold;
   position: relative;
   color: white;
@@ -197,11 +199,11 @@ img {
     margin-right: 0;
   }
 
-  .app__location-name {
+  /* .app__location-name {
     font-size: 2.5rem;
-  }
+  } */
   .app__temp {
-    font-size: 6rem;
+    font-size: 4rem;
   }
   .app__search-bar::placeholder {
     font-size: 0.85rem;

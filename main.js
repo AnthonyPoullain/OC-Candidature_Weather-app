@@ -2,6 +2,7 @@
 const inputEl = document.querySelector("#search-city");
 const searchBtnEl = document.querySelector("#search-btn");
 const locationEL = document.querySelector("#location");
+const locationSubtitleEl = document.querySelector("#location-subtitle");
 const tempEl = document.querySelector("#temp");
 const iconEl = document.querySelector("#icon");
 const descriptionEl = document.querySelector("#description");
@@ -50,6 +51,7 @@ function displayWeather(city) {
     resetSearchBar();
 
     bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" onload="this.style.opacity=.2" alt="background city image"/>`;
+    locationSubtitleEl.innerText = "Météo à";
     locationEL.innerText = data.name;
     iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
     tempEl.innerHTML = `${Math.round(
@@ -74,5 +76,5 @@ searchBtnEl.addEventListener("click", () => {
 });
 
 // DEFAULT
-let city = "bangkok";
+let city = "paris";
 displayWeather(city);
