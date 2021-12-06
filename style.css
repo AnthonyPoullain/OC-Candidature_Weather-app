@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  /* Text */
+  --main-font: "Roboto", sans-serif;
+  --main-text-color: white;
+  --placeholder-text-color: gray;
+  --error-text-color: red;
+
+  /* Text effects */
+  --blur: 2px;
+  --text-opacity: 40%;
+
+  /* Background */
+  --bg-color: black;
+}
+
 *,
 ::before,
 ::after {
@@ -7,13 +24,13 @@
 }
 
 body {
+  font-family: var(--main-font);
   height: 100vh;
   width: 100vw;
-  font-family: arial, sans-serif;
   font-weight: bold;
-  color: white;
+  color: var(--main-text-color);
   position: relative;
-  background-color: black;
+  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +49,7 @@ img {
 
 .app {
   height: 100%;
-  width: 90%;
+  width: 80%;
   max-width: 30rem;
   display: flex;
   flex-direction: column;
@@ -41,7 +58,7 @@ img {
 }
 
 .app__background-img {
-  filter: blur(2px);
+  filter: blur(var(--blur));
   position: absolute;
   top: 0;
   z-index: -1;
@@ -55,15 +72,6 @@ img {
   transition: opacity 1s ease;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
 .app__search {
   width: 100%;
   display: flex;
@@ -73,7 +81,7 @@ img {
 
 .app__search-bar,
 .app__search-btn {
-  opacity: 40%;
+  opacity: var(--text-opacity);
   outline: none;
   border: none;
   padding: 1rem;
@@ -84,7 +92,7 @@ img {
 .app__search-bar::placeholder {
   font-size: 1rem;
   font-weight: inherit;
-  color: gray;
+  color: var(--placeholder-text-color);
   width: 100%;
   text-align: center;
 }
@@ -103,13 +111,13 @@ img {
 }
 
 .app__search-btn svg {
-  color: gray;
+  color: var(--placeholder-text-color);
 }
 
 .typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation
    */
-  border-right: 0.15em solid white; /* The typwriter cursor */
+  border-right: 0.15em solid var(--main-text-color); /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   animation: typing 0.5s steps(15, end), blink-caret 1s step-end infinite;
@@ -132,7 +140,7 @@ img {
     border-color: transparent;
   }
   50% {
-    border-color: white;
+    border-color: var(--main-text-color);
   }
 }
 
@@ -141,7 +149,7 @@ img {
   font-style: italic;
   font-weight: bold;
   padding-bottom: 2rem;
-  color: red;
+  color: var(--error-text-color);
   visibility: hidden;
 }
 
@@ -150,12 +158,12 @@ img {
 }
 
 .app__location-subtitle {
-  opacity: 40%;
-  font-size: clamp(1rem, 6vw, 2rem);
+  opacity: var(--text-opacity);
+  font-size: clamp(1rem, 6vw, 1.5rem);
 }
 
 .app__location-name {
-  font-size: clamp(1.5rem, 8vw, 3rem);
+  font-size: clamp(1.5rem, 9vw, 2.75rem);
   margin: 0;
   margin-bottom: 1rem;
   padding-right: 0.3rem;
@@ -164,7 +172,7 @@ img {
 .app__temp {
   font-size: clamp(5rem, 20vw, 8rem);
   font-weight: bold;
-  color: white;
+  color: var(--main-text-color);
   line-height: 0.8;
   margin: 1.5rem 0;
 }
@@ -188,7 +196,7 @@ img {
 .app__humidity,
 .app__wind-speed {
   font-size: clamp(1rem, 3vw, 1.2rem);
-  opacity: 40%;
+  opacity: var(--text-opacity);
   margin-bottom: 0.5rem;
 }
 

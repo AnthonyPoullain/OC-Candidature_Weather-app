@@ -46,13 +46,13 @@ function displayWeather(city) {
       return;
     }
 
-    document.title = `Météo à ${data.name}`;
-
     resetAnimation(locationEL);
     resetAnimation(bgEl);
     resetSearchBar();
 
-    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${city}" onload="this.style.opacity=.2" alt="background city image"/>`;
+    document.title = `Météo à ${data.name}`;
+
+    bgEl.innerHTML = `<img src="https://source.unsplash.com/featured/?${data.name}" onload="this.style.opacity=.2" alt="background city image"/>`;
     locationSubtitleEl.innerText = "Météo à";
     locationEL.innerText = data.name;
     iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon"/>`;
@@ -65,7 +65,7 @@ function displayWeather(city) {
   });
 }
 
-// HANDLE EVENTS
+// LISTENING FOR EVENTS
 inputEl.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     searchBtnEl.click();
