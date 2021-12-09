@@ -18,6 +18,7 @@ npm install -g live-server
 ```
 Puis :
 ```
+cd app-meteo
 live-server
 ```
 ## Ressources
