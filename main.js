@@ -47,7 +47,6 @@ function displayWeather(city) {
     }
 
     resetAnimation(locationEL);
-    resetAnimation(bgEl);
     resetSearchBar();
 
     document.title = `Météo à ${data.name}`;
