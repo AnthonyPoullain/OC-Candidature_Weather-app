@@ -25,7 +25,8 @@
 
 body {
   font-family: var(--main-font);
-  height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100vw;
   font-weight: bold;
   color: var(--main-text-color);
@@ -35,6 +36,10 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+html {
+  height: -webkit-fill-available;
 }
 
 p::first-letter {
